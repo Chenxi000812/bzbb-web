@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chenxi.bzbb.domain.dao.MyCouponMapper" >
+  <select id="queryUserCoupons" resultType="com.chenxi.bzbb.domain.model.Coupon">
+    SELECT user_coupon.id as ucid ,coupon.id ,coupon.`name`,coupon.requirement,coupon.reduction,user_coupon.status FROM user_coupon,coupon WHERE user_coupon.uid = #{uid,jdbcType=BIGINT}
+    AND user_coupon.cid = coupon.id
+    <if test="status != null">
+        AND user_coupon.status = #{status,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

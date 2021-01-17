@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="oo">
+    123
+</button>
+</body>
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script>
+    $("#oo").click(function () {
+        $.post("/usr/createOrder",{"ids":[2,2,3],"ds":"123"})
+    })
+</script>
+</html>

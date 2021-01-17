@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chenxi.bzbb.domain.dao.OrderInfoMapper" >
+  <select id="selectedOrderInfosByIds" parameterType="java.lang.Long" resultType="com.chenxi.bzbb.domain.model.OrderInfo">
+    SELECT goodSpecifications.id,good.id as gid ,good.title as goodTitle,goodSpecifications.price,goodSpecifications.img AS spimg,goodType.`name` AS 'type',goodBrand.`name` AS 'brand',goodSpecifications.`name` as spName From goodSpecifications,good,goodType,goodBrand where goodSpecifications.id in
+     <foreach collection="ids" item="id" separator="," open="(" close=")">
+        #{id}
+     </foreach>
+     AND goodSpecifications.gid = good.id AND goodType.id = good.type AND goodBrand.id = good.brand
+  </select>
+  <select id="selectedOrderInfoById" parameterType="java.lang.Long" resultType="com.chenxi.bzbb.domain.model.OrderInfo">
+    SELECT goodSpecifications.id,good.id as gid ,good.title as goodTitle,goodSpecifications.price,goodSpecifications.img AS spimg,goodType.`name` AS 'type',goodBrand.`name` AS 'brand',goodSpecifications.`name` as spName From goodSpecifications,good,goodType,goodBrand where goodSpecifications.id =#{id} AND goodSpecifications.gid = good.id AND goodType.id = good.type AND goodBrand.id = good.brand
+  </select>
+
+</mapper>

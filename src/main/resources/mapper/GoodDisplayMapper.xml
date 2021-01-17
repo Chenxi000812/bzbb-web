@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chenxi.bzbb.domain.dao.GoodDisplayMapper" >
+
+  <select id="selectGoodDislay" resultType="com.chenxi.bzbb.domain.model.GoodDisplay">
+    select a.id,a.title,goodType.`name` as type,goodBrand.`name` as brand,a.imgs FROM goodType,goodBrand, (select good.imgs,good.title,good.id,good.type,good.brand from good) as a WHERE
+    goodType.id =a.type AND goodBrand.id = a.brand
+  </select>
+</mapper>

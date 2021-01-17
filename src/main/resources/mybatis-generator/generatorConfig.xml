@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库驱动，数据库地址及表名，账号，密码-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://39.99.205.36:3306/bzbb?serverTimezone=UTC" userId="root" password="Guochenxi2020.">
+            <!--8.0必备！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+            <!--必备！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
+        </jdbcConnection>
+        <!--生成Model类的包名及存放位置-->
+        <javaModelGenerator targetPackage="com.chenxi.bzbb.domain.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="immutable" value="false" />
+            <property name="constructorBased" value="true" />
+        </javaModelGenerator>
+        <!--生成映射文件的包名及存放位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--生成Dao类的包名及存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.chenxi.bzbb.domain.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!--生成对应表及类名,domainObjectName是设置实体类的名字的-->
+        <table tableName="order_">
+
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chenxi.bzbb.domain.dao.OrderDisplayMapper" >
+
+  <select id="queryAllOrdersByStatus" resultType="com.chenxi.bzbb.domain.model.OrderDisplay">
+    select order_.id, order_.goods ,coupon.id as couponId,coupon.reduction, fastmail.`name` AS fastmailName, fastmail.Price AS fastmailPrice, order_.total,order_.createtime,`user`.nickname AS userNickName,order_.uid,shippingaddress.`name` AS receiver,shippingaddress.mobile AS receivermobile , shippingaddress.province,shippingaddress.city,shippingaddress.region,shippingaddress.street,shippingaddress.detailAddress  FROM order_,coupon,fastmail,user_coupon,`user`,shippingaddress  WHERE order_.coupon = user_coupon.id  AND user_coupon.cid = coupon.id AND order_.uid = `user`.id
+    AND order_.fastmail = fastmail.id AND order_.address = shippingaddress.id
+    <if test="status != null">
+      AND order_.`status` = #{status}
+    </if>
+    ORDER BY order_.createtime DESC
+  </select>
+</mapper>

@@ -1,0 +1,26 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  datasource:
+    url: jdbc:mysql://39.99.205.36:3306/bzbb?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: Guochenxi2020.
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  type-aliases-package: com.chenxi.bzbb.domain.model
+  mapper-locations: classpath:mapper/*.xml
+
+my:
+  filepath: /usr/software/bzbbservice/files/
+  #服务器 /usr/software/bzbbservice/files/
+  #本地 C:/Users/98407/Desktop/eee
+
+aliyun:
+  sms:
+    accessKeyId: LTAIsFStAi37Ax2l #创建的accesskey中的AccessKey ID
+    accessKeySecret: Mgs2nDlrJ8YVX9lOSANJB6yc3f7RXT #创建的accesskey中的Access Key Secret
+    template_code: SMS_170348567 #模板管理中的模板CODE
+    sign_name: 独角怪租房 #签名管理中的签名
